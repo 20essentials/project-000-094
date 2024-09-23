@@ -1,0 +1,126 @@
+*:not(dialog),
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body {
+  display: flex;
+  flex-wrap: wrap;
+  place-content: end;
+  min-height: 100dvh;
+  padding: 1.5rem;
+  background-color: black;
+}
+
+dialog {
+  width: 250px;
+  height: 250px;
+  overflow: hidden;
+  background-color: transparent;
+  scale: 0;
+  transition: scale .3s ease, display .3s allow-discrete, overlay .3s allow-discrete;
+
+  &[open] {
+    scale: 1;
+    transition: scale .3s ease;
+
+    @starting-style {
+      scale: 0;
+    }
+  }
+
+  &::backdrop {
+    background-image: linear-gradient(to top,
+        #0002,
+        #00f2);
+    backdrop-filter: blur(4px);
+  }
+
+  button {
+    position: absolute;
+    right: 2rem;
+    top: 2rem;
+    border-radius: 50%;
+    padding: .3rem;
+    border: none;
+    outline: none;
+    box-shadow: 0 0 8px 1px #0004;
+  }
+
+  img {
+    aspect-ratio: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+input {
+  width: 180px;
+  height: 60px;
+  border-radius: 40px;
+  scale: .7;
+  position: relative;
+  appearance: none;
+  box-shadow: 0 0 0 4px #434343, 0 0 0 5px #fff3, inset 0 0 5px 3px #000a;
+  background-image: linear-gradient(to bottom,
+      #999,
+      #222);
+  transition: box-shadow .3s ease;
+
+  &::before,
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+  }
+
+  &::before {
+    top: 0;
+    left: 0;
+    width: 57%;
+    height: 100%;
+    border-radius: inherit;
+    background-image: linear-gradient(to top,
+        #999,
+        #222);
+    box-shadow: 0 0 3px 1px #0008;
+    transform: scale(.98, .96);
+    transition: left .3s ease;
+  }
+
+  &::after {
+    left: 40%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background-image: linear-gradient(to bottom,
+        #999,
+        #222);
+    transition: left .3s ease;
+  }
+
+  &:checked {
+    box-shadow: 0 0 0 4px #434343, 0 0 0 5px #fff3, inset 0 0 15px 5px #000a,
+      inset 0 0 0 200px #0f0;
+    background-image: none;
+
+    &::before {
+      left: 43%;
+    }
+
+    &::after {
+      left: 83%;
+      background-color: black;
+      box-shadow: 0 0 5px #0f0, 0 0 15px #0f0,
+        inset 0 0 5px #0f0, inset 0 0 15px #0f0;
+    }
+  }
+}
