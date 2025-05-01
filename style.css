@@ -4,7 +4,8 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 body {
@@ -17,16 +18,17 @@ body {
 }
 
 dialog {
-  width: 250px;
-  height: 250px;
+  width: 350px;
+  height: 350px;
   overflow: hidden;
   background-color: transparent;
   scale: 0;
-  transition: scale .3s ease, display .3s allow-discrete, overlay .3s allow-discrete;
+  transition: scale 0.3s ease, display 0.3s allow-discrete,
+    overlay 0.3s allow-discrete;
 
   &[open] {
     scale: 1;
-    transition: scale .3s ease;
+    transition: scale 0.3s ease;
 
     @starting-style {
       scale: 0;
@@ -34,9 +36,7 @@ dialog {
   }
 
   &::backdrop {
-    background-image: linear-gradient(to top,
-        #0002,
-        #00f2);
+    background-image: linear-gradient(to top, #0002, #00f2);
     backdrop-filter: blur(4px);
   }
 
@@ -45,10 +45,13 @@ dialog {
     right: 2rem;
     top: 2rem;
     border-radius: 50%;
-    padding: .3rem;
+    padding: 0.3rem;
     border: none;
     outline: none;
     box-shadow: 0 0 8px 1px #0004;
+    display: flex;
+    flex-wrap: wrap;
+    place-content: center;
   }
 
   img {
@@ -64,14 +67,12 @@ input {
   width: 180px;
   height: 60px;
   border-radius: 40px;
-  scale: .7;
+  scale: 0.7;
   position: relative;
   appearance: none;
   box-shadow: 0 0 0 4px #434343, 0 0 0 5px #fff3, inset 0 0 5px 3px #000a;
-  background-image: linear-gradient(to bottom,
-      #999,
-      #222);
-  transition: box-shadow .3s ease;
+  background-image: linear-gradient(to bottom, #999, #222);
+  transition: box-shadow 0.3s ease;
 
   &::before,
   &::after {
@@ -86,12 +87,10 @@ input {
     width: 57%;
     height: 100%;
     border-radius: inherit;
-    background-image: linear-gradient(to top,
-        #999,
-        #222);
+    background-image: linear-gradient(to top, #999, #222);
     box-shadow: 0 0 3px 1px #0008;
-    transform: scale(.98, .96);
-    transition: left .3s ease;
+    transform: scale(0.98, 0.96);
+    transition: left 0.3s ease;
   }
 
   &::after {
@@ -101,10 +100,8 @@ input {
     width: 11px;
     height: 11px;
     border-radius: 50%;
-    background-image: linear-gradient(to bottom,
-        #999,
-        #222);
-    transition: left .3s ease;
+    background-image: linear-gradient(to bottom, #999, #222);
+    transition: left 0.3s ease;
   }
 
   &:checked {
@@ -119,8 +116,8 @@ input {
     &::after {
       left: 83%;
       background-color: black;
-      box-shadow: 0 0 5px #0f0, 0 0 15px #0f0,
-        inset 0 0 5px #0f0, inset 0 0 15px #0f0;
+      box-shadow: 0 0 5px #0f0, 0 0 15px #0f0, inset 0 0 5px #0f0,
+        inset 0 0 15px #0f0;
     }
   }
 }
